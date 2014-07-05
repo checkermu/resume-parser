@@ -1,0 +1,63 @@
+                                                 Vineet Jain
+              19271 San Marcos Rd, Saratoga, California 95070 United States | (408) 608-8275
+      vinee109@berkeley.edu | http://www.linkedin.com/in/vineetjain2 | https://github.com/vinee109
+
+SKILLS
+
+- Proficient in programming languages: Java, Python, Scheme, C, CSS, HTML
+- Expertise in Android Mobile Application development, web development, Git version control
+- Familiar with Window, Mac, UNIX, Ubuntu Operating Systems and their additional programs
+- Excellent understanding of Object Oriented Programming, Map Reduce, Parsing, Network Programming
+
+EDUCATION
+
+University of California, Berkeley                                                                       Berkeley, CA
+BA Computer Science, Molecular and Cell Biology-Neurobiology                                           Class of 2016
+
+PROJECTS
+
+PaintProgram                                                                                           December 2013
+- A java application that allows user to create various colored drawings on a canvas, save them for later use as well
+  as export the drawn image into a format easy for distribution.
+- Utilizes java.awt as well as other java graphics API documentation
+
+Optimized 2D Image Convolution                                                                        November 2013
+- A parallel C program that performs 2d Image convolution on input images at approximately 130-150 gigaflops/s
+- Utilizes various optimization techniques such as loop unrolling, Intel SSE SIMD intrinsics, as well as OpenMP
+
+Map Reduce on Amazon EC2                                                                              September 2013
+- A Java application, ran with Hadoop, that utilizes basic Map/Reduce concepts to analyze gigabytes worth of text
+  data and calculate the co-occurrence rate of words with a specific target word
+
+Response Analyzer                                            Center for Teaching Excellence, Haas School of Business
+                                                                                                 April 2013 ­ present
+- A Java application designed to analyze and generate reports regarding the performance of professors in the Haas
+  School of Business based on student responses in surveys given during mid-course evaluations
+- Implemented sentiment analysis to organize student comments into various categories as well as subcategories
+
+Grade Tracker | https://play.google.com/store/apps/details?id=com.vjain.gradetracker                   December 2012
+- Allows students to keep track of their grade in multiple classes by having them input the scores for each
+assignment and then producing a readable display of their overall grade in the class
+
+WORK HISTORY
+
+uConnect | UC Berkeley's First Virtual Career Fair                                  http://www.universityconnect.us/
+Co Lead Backend Engineer                                                                        August 2013 - present
+
+- Implemented Python and HTML in a social platform for students and company recruiters to create profiles and
+  interact about various employment opportunities, contains over 100 student profiles
+- Spearheaded file upload and storage system using Google Blobstore and Datastore API that allows students and
+  recruiters to display various documents
+
+Berkeley Department of Computer Science                                                                  UC Berkeley
+Academic Intern                                                                               June 2013-August 2013
+
+- Worked as a lab assistant for the python course CS 61A offered in 2013 Summer Session,
+- Assisted various Teaching Assistants for the class in teaching and administering various computer science concepts
+  as well as labs and homework assignments.
+
+
+
+
+                                     !"#"$"%&"'(&)%(*"(+$,-./"/(0+,%($"10"'2(
+
