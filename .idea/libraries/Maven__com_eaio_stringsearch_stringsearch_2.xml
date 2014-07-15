@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.eaio.stringsearch:stringsearch:2">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/eaio/stringsearch/stringsearch/2/stringsearch-2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/eaio/stringsearch/stringsearch/2/stringsearch-2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/eaio/stringsearch/stringsearch/2/stringsearch-2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -14,6 +14,7 @@
     <orderEntry type="library" name="Maven: org.apache.poi:poi:3.10-FINAL" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.poi:poi-scratchpad:3.10-FINAL" level="project" />
+    <orderEntry type="library" name="Maven: com.eaio.stringsearch:stringsearch:2" level="project" />
   </component>
 </module>
 

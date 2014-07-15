@@ -15,6 +15,7 @@ public class Education {
     private ArrayList<String> objective;                // generated list of meaningful sentences
     private ParseHelper parseHelper;
     private IntelligenceInitializer intelligenceInitializer;
+    private ParserUtils parserUtils;
 
     public IntelligenceInitializer getIntelligenceInitializer() {
         return intelligenceInitializer;
@@ -30,6 +31,7 @@ public class Education {
         this.intelligenceInitializer = intelligenceInitializer;
         parseHelper = new ParseHelper(resumeFile, outputFile);
         objective = new ArrayList<String>();
+        parserUtils = new ParserUtils();
     }
 
     public String getResumeFile() {
@@ -53,19 +55,6 @@ public class Education {
 
     private String outputFile;
 
-
-    // recursively removes trailing punctation or anything that is not a letter or number
-    private String cleanUp(String str) {
-        if (str.length() == 0) {
-            return "";
-        }
-        String ending = str.substring(str.length() - 1);
-        if (ending.matches("^[a-zA-Z0-9_]*$")) {
-            return str;
-        }
-        return cleanUp(str.substring(0, str.length() - 1));
-    }
-
     // used to process the string text originally converted into one massive string
     // this method breaks up the input text into various lines based on the delimiters specified  and returns an ArrayList of the resulting lines
     public ArrayList<String> split(String str) {
@@ -84,7 +73,7 @@ public class Education {
                 }
             }
             Collections.sort(splice);
-            lines.add(cleanUp(str.substring(0, splice.get(0))));
+            lines.add(parserUtils.cleanUp(str.substring(0, splice.get(0))));
             str = str.substring(splice.get(0) + spliceLocs.get(splice.get(0)).length());
             splice.clear();
             spliceLocs.clear();
@@ -92,47 +81,85 @@ public class Education {
         return lines;
     }
 
-    // binary search, used to determine if a word is a hot keyword or not, or if a verb is an action verb
-    // both the verb file and the keywords file are kept in alphabetical order to maintain binary search capability
-    private int search(String s, ArrayList<String> list) {
-        return binarySearch_helper(s, list, 0, list.size() - 1);
-    }
-
-    // helper function to implement binary search
-    private int binarySearch_helper(String s, ArrayList<String> list, int start, int end) {
-        if (end < start) {
-            return -1;
-        }
-        s = s.toLowerCase();
-        int middle = (start + end) / 2;
-        if (s.equals(list.get(middle).toLowerCase())) {
-            return middle;
-        } else if (list.get(middle).toLowerCase().compareTo(s) < 0) {
-            return binarySearch_helper(s, list, middle + 1, end);
-        } else {
-            return binarySearch_helper(s, list, start, middle - 1);
-        }
-    }
 
     // analyzes the list of lines and finds hot keywords and well as meaningful sentences
     public void analyze() {
+        int line = 0;
         for (String str : split(parseHelper.getParagraphs())) {
-            System.out.println(str);
-            //if (str.contains(intelligenceInitializer.getKeywords().keySet()))
-            //for (Integer i : new ArrayList<Integer>(intelligenceInitializer.getKeywords().keySet())) {
+            line++;
+            for (Integer i : new ArrayList<Integer>(intelligenceInitializer.getKeywords().keySet())) {
+                if (i == 1) {
+                    for (String word : str.split(" ")) {
+                        word = parserUtils.cleanUp(word);
+                        if (parserUtils.search(word.toLowerCase(), intelligenceInitializer.getDummyVerbs()) >= 0) {
+                            if (!objective.contains(str)) {
+                                objective.add(str);
+                                arrayList.add(line);
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+        analyzeSchool(arrayList);
+        splitSchool();
+    }
+
+    private ArrayList<Integer> arrayList = new ArrayList<Integer>();
+    private ArrayList<String> arrayListUniversity = new ArrayList<String>();
+    //Todo Find
+
+    public void analyzeSchool(ArrayList<Integer> lineNos) {
+        ArrayList<String> paragraphs = split(parseHelper.getParagraphs());
+        ArrayList<String> dummySchoolRelated = new ArrayList<String>();
+        dummySchoolRelated.add("University");
+        dummySchoolRelated.add("college");
+        dummySchoolRelated.add("school");
+        for (int i : lineNos) {
+            int dummyLines = i - 10;
+            for (int loopCurrentCummyLines = dummyLines; loopCurrentCummyLines < i; loopCurrentCummyLines++) {
+                //System.out.println(paragraphs.get(loopCurrentCummyLines));
+                for (String word : paragraphs.get(loopCurrentCummyLines).split(" ")) {
+                    word = parserUtils.cleanUp(word).trim();
+                    for (String keyword : dummySchoolRelated) {
+                        if (word.toLowerCase().trim().contains(keyword.toLowerCase())) {
+                            if (!arrayListUniversity.contains(paragraphs.get(loopCurrentCummyLines))) {
+                                arrayListUniversity.add(paragraphs.get(loopCurrentCummyLines));
+                            }
+
+                        }
+                    }
 
 
-            //}
+                }
+            }
+        }
+    }
+
+    private void splitSchool() {
+        for (String line : arrayListUniversity) {
+            // System.out.println(parseHelper.reduceSpace(line));
+            int i = 1;
+            if (line.lastIndexOf("University") > 0) {
+
+                String studiedDate = line.substring(0, line.lastIndexOf("University"));
+                String educationDate = line.substring(line.lastIndexOf("University"));
+                System.out.println(parseHelper.reduceSpace(studiedDate).trim());
+                System.out.println(parseHelper.reduceSpace(objective.get(i)));
+                System.out.println(parseHelper.reduceSpace(educationDate).trim());
+                i++;
+            }
 
         }
     }
 
     // method that is used to display the output to the console
     private void display() {
-        System.out.println("Objective");
+        System.out.println("Education");
         System.out.println("=====================");
         for (String str : objective) {
-            System.out.println(parseHelper.reduceSpace(str));
+
         }
 
     }

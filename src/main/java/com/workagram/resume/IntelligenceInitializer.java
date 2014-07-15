@@ -98,6 +98,15 @@ public class IntelligenceInitializer {
         return verbs;
     }
 
+   public ArrayList<String> getDummyVerbs(){
+       ArrayList<String> dummyVerbs = new ArrayList<String>();
+       dummyVerbs.add("bachelor");
+       dummyVerbs.add("masters");
+       dummyVerbs.add("doctor");
+       dummyVerbs.add("master");
+       return dummyVerbs;
+   }
+
     public void setVerbs(ArrayList<String> verbs) {
         this.verbs = verbs;
     }
